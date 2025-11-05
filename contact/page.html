@@ -4,64 +4,33 @@
 <head>
     <meta charset="utf-8">
     
+    <!-- Title protection script - must run before anything else -->
     <script>
-        // Set title immediately before anything else loads
         (function() {
-            const correctTitle = "Wizd - Automation Agency";
-            
-            // Override document.title getter/setter to prevent any changes
-            let titleValue = correctTitle;
+            var targetTitle = "Wizd - Automation Agency";
             Object.defineProperty(document, 'title', {
                 get: function() {
-                    return titleValue;
+                    return targetTitle;
                 },
-                set: function(newTitle) {
-                    titleValue = correctTitle;
-                    const titleEl = document.querySelector('title');
-                    if (titleEl) {
-                        titleEl.textContent = correctTitle;
+                set: function(value) {
+                    targetTitle = "Wizd - Automation Agency";
+                    if (document.querySelector('title')) {
+                        document.querySelector('title').textContent = targetTitle;
                     }
                 },
                 configurable: true
             });
-            
-            // Set initial title immediately
-            if (document.querySelector) {
-                const titleEl = document.querySelector('title');
-                if (titleEl) {
-                    titleEl.textContent = correctTitle;
-                } else {
-                    // Create title element if it doesn't exist yet
-                    document.addEventListener('DOMContentLoaded', function() {
-                        const title = document.querySelector('title') || document.createElement('title');
-                        title.textContent = correctTitle;
-                        if (!document.querySelector('title')) {
-                            document.head.appendChild(title);
-                        }
-                    });
-                }
-            }
-            
-            // Also monitor for changes
-            const checkTitle = function() {
-                const titleEl = document.querySelector('title');
-                if (titleEl && titleEl.textContent !== correctTitle) {
-                    titleEl.textContent = correctTitle;
-                }
-            };
-            
-            // Run immediately and continuously
-            if (document.readyState === 'loading') {
-                document.addEventListener('DOMContentLoaded', checkTitle);
+            if (document.querySelector('title')) {
+                document.querySelector('title').textContent = targetTitle;
             } else {
-                checkTitle();
+                var titleElement = document.createElement('title');
+                titleElement.textContent = targetTitle;
+                document.head.appendChild(titleElement);
             }
-            
-            setInterval(checkTitle, 50);
         })();
     </script>
     
-    <script>try{if(localStorage.get("__framer_force_showing_editorbar_since")){const n=document.createElement("link");n.rel = "modulepreload";n.href="https://framer.com/edit/init.mjs";document.head.appendChild(n)}}catch(e){}}</script>
+    <script>try{if(localStorage.get("__framer_force_showing_editorbar_since")){const n=document.createElement("link");n.rel = "modulepreload";n.href="https://framer.com/edit/init.mjs";document.head.appendChild(n)}}catch(e){}</script>
     
     
     
@@ -79,7 +48,7 @@
     <meta property="og:title" content="Wizd - Automation Agency">
     <meta property="og:description" content="Automate your business workflows with Wizd. Expert automation solutions for modern businesses.">
     <meta property="og:image" content="https://framerusercontent.com/images/EJiwktVA8d5Jyun6HFUrZrFCdxw.png">
-    <meta property="og:url" content="https://wizd.ai/contact">
+    <meta property="og:url" content="https://wizd.com/contact">
     
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Wizd - Automation Agency">
