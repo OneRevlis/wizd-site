@@ -1,0 +1,27 @@
+{
+  "rewrites": [
+    {
+      "source": "/",
+      "destination": "/page.html"
+    },
+    {
+      "source": "/contact",
+      "destination": "/contact/page.html"
+    },
+    {
+      "source": "/privacy-policy",
+      "destination": "/privacy-policy/page.html"
+    },
+    {
+      "source": "/terms-conditions",
+      "destination": "/terms-conditions/page.html"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/page.html"
+    }
+  ],
+  "cleanUrls": true,
+  "trailingSlash": false
+}
+
