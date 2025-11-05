@@ -1,10 +1,6 @@
 {
   "rewrites": [
     {
-      "source": "/",
-      "destination": "/page.html"
-    },
-    {
       "source": "/contact",
       "destination": "/contact/page.html"
     },
@@ -17,11 +13,13 @@
       "destination": "/terms-conditions/page.html"
     },
     {
-      "source": "/(.*)",
+      "source": "/404",
+      "destination": "/page.html"
+    },
+    {
+      "source": "/((?!cdn-cgi).*)",
       "destination": "/page.html"
     }
-  ],
-  "cleanUrls": true,
-  "trailingSlash": false
+  ]
 }
 
