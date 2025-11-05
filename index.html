@@ -4,6 +4,62 @@
 <head>
     <meta charset="utf-8">
     
+    <script>
+        // Set title immediately before anything else loads
+        (function() {
+            const correctTitle = "Wizd - Automation Agency";
+            
+            // Override document.title getter/setter to prevent any changes
+            let titleValue = correctTitle;
+            Object.defineProperty(document, 'title', {
+                get: function() {
+                    return titleValue;
+                },
+                set: function(newTitle) {
+                    titleValue = correctTitle;
+                    const titleEl = document.querySelector('title');
+                    if (titleEl) {
+                        titleEl.textContent = correctTitle;
+                    }
+                },
+                configurable: true
+            });
+            
+            // Set initial title immediately
+            if (document.querySelector) {
+                const titleEl = document.querySelector('title');
+                if (titleEl) {
+                    titleEl.textContent = correctTitle;
+                } else {
+                    // Create title element if it doesn't exist yet
+                    document.addEventListener('DOMContentLoaded', function() {
+                        const title = document.querySelector('title') || document.createElement('title');
+                        title.textContent = correctTitle;
+                        if (!document.querySelector('title')) {
+                            document.head.appendChild(title);
+                        }
+                    });
+                }
+            }
+            
+            // Also monitor for changes
+            const checkTitle = function() {
+                const titleEl = document.querySelector('title');
+                if (titleEl && titleEl.textContent !== correctTitle) {
+                    titleEl.textContent = correctTitle;
+                }
+            };
+            
+            // Run immediately and continuously
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', checkTitle);
+            } else {
+                checkTitle();
+            }
+            
+            setInterval(checkTitle, 50);
+        })();
+    </script>
     
     <script>try{if(localStorage.get("__framer_force_showing_editorbar_since")){const n=document.createElement("link");n.rel = "modulepreload";n.href="https://framer.com/edit/init.mjs";document.head.appendChild(n)}}catch(e){}</script>
     
@@ -12,32 +68,6 @@
     <meta name="viewport" content="width=device-width">
     <meta name="generator" content="Framer 9d1d4bc">
     <title>Wizd - Automation Agency</title>
-    <script>
-        (function() {
-            const correctTitle = "Wizd - Automation Agency";
-            document.title = correctTitle;
-            
-            // Monitor title changes and reset immediately
-            const titleObserver = new MutationObserver(function(mutations) {
-                if (document.title !== correctTitle) {
-                    document.title = correctTitle;
-                }
-            });
-            
-            // Observe title element changes
-            const titleElement = document.querySelector('title');
-            if (titleElement) {
-                titleObserver.observe(titleElement, { childList: true, characterData: true, subtree: true });
-            }
-            
-            // Also check periodically in case MutationObserver doesn't catch it
-            setInterval(function() {
-                if (document.title !== correctTitle) {
-                    document.title = correctTitle;
-                }
-            }, 100);
-        })();
-    </script>
     <meta name="description" content="Wizd is a premium automation agency, perfect for showcasing your brand with a sleek, modern design, responsive layouts, and easy customization.">
     <meta name="framer-search-index" content="https://framerusercontent.com/sites/7ntevsLiSfiCssAyScFNUG/searchIndex-A7nEibGeSopS.json">
     <meta name="framer-search-index-fallback" content="https://framerusercontent.com/sites/7ntevsLiSfiCssAyScFNUG/searchIndex-Y969R0e9AP3T.json">
