@@ -14,11 +14,11 @@
     },
     {
       "source": "/404",
-      "destination": "/index.html"
+      "destination": "/page.html"
     },
     {
       "source": "/((?!cdn-cgi).*)",
-      "destination": "/index.html"
+      "destination": "/page.html"
     }
   ]
 }
